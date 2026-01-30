@@ -97,7 +97,7 @@ func main() {
 
 		decision := svc.CheckRateLimit(key)
 		resp := CheckResponse{Allowed: decision.Allowed, Remaining: decision.Remaining}
-		if allowed {
+		if decision.Allowed {
 			w.WriteHeader(http.StatusOK)
 		} else {
 			w.WriteHeader(http.StatusTooManyRequests)
